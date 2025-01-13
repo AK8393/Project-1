@@ -1,0 +1,86 @@
+#include <iostream> 
+using namespace std; 
+
+struct node { 
+
+    int data; 
+    node* prev; 
+    node* next; 
+    node(int value){ 
+        data - value; 
+        prev = nullptr; 
+        next = nullptr; 
+    } 
+
+}; 
+
+class doublylinkedlist{ 
+    private: 
+
+    node*head; 
+
+    public: 
+
+    doublylinkedlist(){ 
+        head = nullptr; 
+        } 
+
+void insert(int value){ 
+    node* newnode = new node(value); 
+    if (head == nullptr){ 
+        head = newnode; 
+    } 
+
+   }else { 
+
+node* temp = head; 
+
+while (temp->next ! = nullptr){ 
+
+temp = temp->next; 
+
+    } 
+
+        temp->next = newnode; 
+
+    newnode->prev = temp; 
+
+ } 
+
+ void display(){ 
+
+    if (head == nullptr){ 
+
+        cout << "list is empty." << endl; 
+        return; 
+
+    } 
+
+    node* temp = head; 
+
+    cout << "doubly linked list:"; 
+
+ while (temp != nullptr) { 
+
+        cout << temp->data <<" "; 
+
+        temp = temp->next; 
+    } 
+
+    cout<<endl; 
+
+ } 
+}; 
+
+int main(){ 
+    doublylinkedlist dll; 
+    cout<< " inteserting elements into the doubly linked list..." << endl; 
+    dll.insert(10); 
+    dll.insert(20); 
+    dll.insert(30); 
+    cout<< "displaying the doubly linked list:" <<endl; 
+    dll.display(); 
+
+    return 0; 
+}
+ 
