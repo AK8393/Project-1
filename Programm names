@@ -1,7 +1,7 @@
 # C++ assessment 
 Q1 Write a programm along  with the logic to implement  a stack using two queues
 Q2 write a programm to merge two sorted array into a single sorted array
-Q3 write a programm to implement dijkstra algorithm for finding the shortest path in a graph 
-Q4 Write a programm to implement a trie with insert,search and delete operations
-Q5 write a programm to implement a binary search tree with insert,search and decision in c++ 
-Q6
+Q3 write a programm to implement a doubly linkrd list with insert & display operation
+Q4 write a programm to implement dijkstra algorithm for finding the shortest path in a graph 
+Q5 Write a programm to implement a trie with insert,search and delete operations
+Q6 write a programm to implement a binary search tree with insert,search and decision in c++ 
