@@ -1,0 +1,72 @@
+
+ 
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <climits>
+
+using namespace std;
+
+// Define a pair type for priority queue: (distance, node)
+typedef pair<int, int> Pair;
+
+// Function to implement Dijkstra's algorithm
+void dijkstra(int src, const vector<vector<Pair>> &adj, vector<int> &dist) {
+    priority_queue<Pair, vector<Pair>, greater<Pair>> pq; // Min-heap
+    dist[src] = 0;
+    pq.push({0, src});
+
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        int currentDistance = pq.top().first;
+        pq.pop();
+
+        // If this distance is outdated, skip it
+        if (currentDistance > dist[u])
+            continue;
+
+        // Traverse all neighbors of u
+        for (const auto &neighbor : adj[u]) {
+            int v = neighbor.first;
+            int weight = neighbor.second;
+
+            // Relaxation step
+            if (dist[u] + weight < dist[v]) {
+                dist[v] = dist[u] + weight;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+}
+
+int main() {
+    int n, m; // Number of vertices and edges
+    cout << "Enter the number of vertices and edges: ";
+    cin >> n >> m;
+
+    vector<vector<Pair>> adj(n);
+    cout << "Enter the edges (u, v, weight):\n";
+    for (int i = 0; i < m; i++) {
+        int u, v, w;
+        cin >> u >> v >> w;
+        adj[u].push_back({v, w});
+        adj[v].push_back({u, w}); // For undirected graph; remove this for directed graph
+    }
+
+    int src;
+    cout << "Enter the source vertex: ";
+    cin >> src;
+
+    vector<int> dist(n, INT_MAX);
+    dijkstra(src, adj, dist);
+
+    cout << "Shortest distances from source " << src << ":\n";
+    for (int i = 0; i < n; i++) {
+        if (dist[i] == INT_MAX)
+            cout << i << ": INF\n";
+        else
+            cout << i << ": " << dist[i] << "\n";
+    }
+
+    return 0;
+}
