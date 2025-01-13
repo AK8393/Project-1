@@ -1,0 +1,48 @@
+
+#include <iostream> 
+
+using namespace std; 
+
+int main(){ 
+
+    tree,insert(50); 
+
+    tree.insert(30); 
+
+    tree.insert(70); 
+
+    tree,insert(20); 
+
+    tree.insert(40); 
+
+    tree.insert(60); 
+
+    tree.insert(80); 
+
+    cout<< "In-order traversal:"; 
+
+    tree.display(); 
+
+ 
+
+ 
+
+    cout<< "serach 40:"<< (tree.serach(40) ? "found" :"not found") <<endl; 
+
+    cout<<"search 90; "<< (tree.serach(90) ? "found" : "not found")<< endl; 
+
+ 
+
+ 
+
+    tree.deletenode(50); 
+
+    cout<<"after deleting 50:"; 
+
+    tree.display(); 
+
+    return 0; 
+
+ 
+
+} 
