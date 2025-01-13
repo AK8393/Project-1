@@ -1,0 +1,179 @@
+
+ 
+#include <iostream> 
+
+#include <memory> 
+
+ 
+
+const int ALPHABET_SIZE = 26; 
+
+ 
+
+class TrieNode { 
+
+public: 
+
+    bool isEndOfWord; 
+
+    std::shared_ptr<TrieNode> children[ALPHABET_SIZE]; 
+
+ 
+
+    TrieNode() { 
+
+        isEndOfWord = false; 
+
+        for (int i = 0; i < ALPHABET_SIZE; ++i) { 
+
+            children[i] = nullptr; 
+
+        } 
+
+    } 
+
+}; 
+
+ 
+
+class Trie { 
+
+public: 
+
+    Trie() { 
+
+        root = std::make_shared<TrieNode>(); 
+
+    } 
+
+ 
+
+    void insert(const std::string& word) { 
+
+        auto node = root; 
+
+        for (char c : word) { 
+
+            int index = c - 'a'; 
+
+            if (!node->children[index]) { 
+
+                node->children[index] = std::make_shared<TrieNode>(); 
+
+            } 
+
+            node = node->children[index]; 
+
+        } 
+
+        node->isEndOfWord = true; 
+
+    } 
+
+ 
+
+    bool search(const std::string& word) { 
+
+        auto node = root; 
+
+        for (char c : word) { 
+
+            int index = c - 'a'; 
+
+            if (!node->children[index]) { 
+
+                return false; 
+
+            } 
+
+            node = node->children[index]; 
+
+        } 
+
+        return node->isEndOfWord; 
+
+    } 
+
+ 
+
+    void remove(const std::string& word) { 
+
+        remove(root, word, 0); 
+
+    } 
+
+ 
+
+private: 
+
+    std::shared_ptr<TrieNode> root; 
+
+ 
+
+    bool remove(std::shared_ptr<TrieNode> node, const std::string& word, int depth) { 
+
+        if (!node) { 
+
+            return false; 
+
+        } 
+
+        if (depth == word.size()) { 
+
+            if (node->isEndOfWord) { 
+
+                node->isEndOfWord = false; 
+
+            } 
+
+            return node->children.empty(); 
+
+        } 
+
+        int index = word[depth] - 'a'; 
+
+        if (remove(node->children[index], word, depth + 1)) { 
+
+            node->children[index] = nullptr; 
+
+            return !node->isEndOfWord && node->children.empty(); 
+
+        } 
+
+        return false; 
+
+    } 
+
+}; 
+
+ 
+
+int main() { 
+
+    Trie trie; 
+
+ 
+
+    trie.insert("apple"); 
+
+    trie.insert("banana"); 
+
+ 
+
+    std::cout << "Search 'apple': " << (trie.search("apple") ? "Found" : "Not Found") << std::endl; 
+
+    std::cout << "Search 'banana': " << (trie.search("banana") ? "Found" : "Not Found") << std::endl; 
+
+    std::cout << "Search 'grape': " << (trie.search("grape") ? "Found" : "Not Found") << std::endl; 
+
+ 
+
+    trie.remove("banana"); 
+
+    std::cout << "Search 'banana' after removal: " << (trie.search("banana") ? "Found" : "Not Found") << std::endl; 
+
+ 
+
+    return 0; 
+
+} 
