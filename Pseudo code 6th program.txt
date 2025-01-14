@@ -1,0 +1,23 @@
+Psuedo code for program
+
+
+Node Structure: Defines the basic structure of a node with data, left, and right pointers.
+
+BST Class:
+
+Manages the tree with a root node.
+Implements insert to add values recursively.
+Implements search to check if a value exists.
+Implements decision to provide a message based on the search result.
+Implements display using in-order traversal to print the tree in sorted order.
+Main Function:
+
+
+NODE STRUCTURE
+
+Define Node:
+    Data: Integer
+    Left: Pointer to Node (Initially NULL)
+    Right: Pointer to Node (Initially NULL)
+
+
