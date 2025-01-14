@@ -1,0 +1,40 @@
+DIJKSTRA  Algorithm Pseudocode
+
+input:
+
+graph: adjacency list representing the graph. each node points to a list of (destination, weight) pairs.
+
+source: the starting node
+
+output:
+
+shortes distance from souce to all other nodes
+
+
+EXAMPLE 
+
+Graph representation
+
+nodes: {0,1,2,3,4}
+
+edges: (0 = 1,2),(0=2,4),(1=2,1),(1=3,7),(2=4,3),(3=4,1)
+
+input:
+
+source = 0
+
+output:
+
+shortrst distance : distance[0] = 0
+
+distance[1] = 2, distance[2] = 3
+distance[3] = 9, distance[4] = 6
+
+
+
+
+
+
+
+
+
