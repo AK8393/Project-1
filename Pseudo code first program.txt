@@ -1,0 +1,67 @@
+Pseudo code for first program
+
+1 Data structure (Two queues)
+
+Q1 Q2
+
+2 Operation
+
+:PUSH(x) To add an element x to the stack:
+
+CODE = 
+
+Push(x):
+     Enqueue x into q2
+     while q1 is not empty:
+         dequeue from q1 and enqueue into q2
+     swap q1 and q2
+
+: Pop() To remove the top element of the stack:
+
+CODE =
+
+Pop():
+     If q1 is empty:
+          print "stack underflow"
+          return
+       dequeue the front element from q1
+
+Top() To get the top elment of the stack:
+
+CODE =
+
+Top():
+       if q1 is empty:
+         print "stack is empty"
+         return -1
+        return the front element of q1
+
+Empty()  To check if the stack is empty
+
+CODE =
+
+Empty():
+       return (q1 is empty)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
