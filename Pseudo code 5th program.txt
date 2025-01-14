@@ -1,0 +1,86 @@
+Pseudo code for trie
+
+TrieNode {
+    children: Array[26] of TrieNode
+    isEndOfWord: Boolean              
+}
+
+Trie {
+    root: TrieNode                   
+    insert(word) {
+        currentNode = root
+        for char c in word:
+            index = c - 'a'
+            if currentNode.children[index] is null:
+                create a new TrieNode at currentNode.children[index]
+            currentNode = currentNode.children[index]
+        currentNode.isEndOfWord = true
+    }
+
+    search(word) {
+        currentNode = root
+        for char c in word:
+            index = c - 'a'
+            if currentNode.children[index] is null:
+                return false
+            currentNode = currentNode.children[index]
+        return currentNode.isEndOfWord
+    }
+
+    delete(word) {
+        deleteHelper(root, word, 0)
+
+    deleteHelper(node, word, depth) {
+        if node is null:
+            return null
+        if depth == length(word):
+            if node.isEndOfWord:
+                node.isEndOfWord = false
+            if node has no children:
+                return null
+            return node
+
+        index = word[depth] - 'a'
+        node.children[index] = deleteHelper(node.children[index], word, depth + 1)
+
+        if node has no children and node.isEndOfWord is false:
+            return null
+        return node
+    }
+}
+
+EXPLANATION
+
+1 Trienode:
+
+. children is an array of size 26(one for each lettera to z)
+. isendofword indicates if the node marks the end of the word
+
+2 trie
+
+. insert(word)
+. search(word)
+. delete(word)
+
+3 deletehelper
+
+traverses the trie to delete nodes when necessary
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
