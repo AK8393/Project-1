@@ -1,0 +1,78 @@
+Pseudo code for 3rd program
+
+
+NODE STRUCTURE
+ 
+STRUCT Node
+    DATA: Integer
+    PREV: Node (Pointer to previous node)
+    NEXT: Node (Pointer to next node)
+END STRUCT
+
+
+DOUBLYLINKEDLIST CLASS	
+
+
+CLASS DoublyLinkedList
+    PRIVATE HEAD: Node (Pointer to the first node)
+
+    METHOD Constructor()
+        HEAD = NULL
+    END METHOD
+
+    METHOD Insert(value: Integer)
+        NEW_NODE = CREATE NEW Node
+        NEW_NODE.DATA = value
+        NEW_NODE.PREV = NULL
+        NEW_NODE.NEXT = NULL
+
+        IF HEAD IS NULL THEN
+            HEAD = NEW_NODE
+        ELSE
+            TEMP = HEAD
+            WHILE TEMP.NEXT IS NOT NULL DO
+                TEMP = TEMP.NEXT
+            END WHILE
+            TEMP.NEXT = NEW_NODE
+            NEW_NODE.PREV = TEMP
+        END IF
+    END METHOD
+
+    METHOD Display()
+        IF HEAD IS NULL THEN
+            PRINT "The list is empty."
+        ELSE
+            TEMP = HEAD
+            PRINT "Doubly Linked List: "
+            WHILE TEMP IS NOT NULL DO
+                PRINT TEMP.DATA
+                TEMP = TEMP.NEXT
+            END WHILE
+        END IF
+    END METHOD
+END CLASS
+
+
+
+EXPLAINATION'
+
+1 node structure : defines a node with data , perv and next
+2 insert method:
+3 display method
+4 main function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
